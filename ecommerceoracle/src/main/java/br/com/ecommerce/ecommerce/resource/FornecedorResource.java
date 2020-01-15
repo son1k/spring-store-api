@@ -1,0 +1,42 @@
+package br.com.ecommerce.ecommerce.resource;
+
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import br.com.ecommerce.ecommerce.dao.FornecedorDAO;
+import br.com.ecommerce.ecommerce.domain.produtos.Fornecedor;
+import br.com.ecommerce.ecommerce.dto.FornecedorDTO;
+
+@RestController
+@RequestMapping("/ecommerce/fornecedores")
+public class FornecedorResource {
+
+	@Autowired
+	private FornecedorDAO fornecedorDAO;
+	
+	@Autowired
+	private FornecedorDTO fornecedorDTO;
+	
+	@GetMapping
+	public List<FornecedorDTO> listaTodosOsFornecedores(){
+		
+		return fornecedorDTO.converter(fornecedorDAO.todosOsFornecedores());
+	}
+	
+	@GetMapping("/{codigoFornecedor}")
+	public ResponseEntity<FornecedorDTO> listarTodosOsFornecedores(@PathVariable int codigoFornecedor){
+		
+		Optional<Fornecedor> fornecedor = fornecedorDAO.umFornecedor(codigoFornecedor);
+		
+		if(fornecedor.isPresent())
+			return ResponseEntity.ok(new FornecedorDTO(fornecedor.get()));
+		else
+			return ResponseEntity.notFound().build();
+	}
+	
+}

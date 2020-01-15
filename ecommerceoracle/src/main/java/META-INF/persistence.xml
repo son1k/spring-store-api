@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="Ecommerce">
+
+            <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+            
+            <class>br.com.ecommerce.ecommerce.domain.autenticacao.Endereco</class>
+            <class>br.com.ecommerce.ecommerce.domain.autenticacao.Usuario</class>
+            <class>br.com.ecommerce.ecommerce.domain.pagamentos.Carrinho</class>
+            <class>br.com.ecommerce.ecommerce.domain.pagamentos.Confirmacao</class>
+            <class>br.com.ecommerce.ecommerce.domain.pagamentos.Ordem</class>
+            <class>br.com.ecommerce.ecommerce.domain.pagamentos.Pagamento</class>
+            <class>br.com.ecommerce.ecommerce.domain.produtos.Estoque</class>
+            <class>br.com.ecommerce.ecommerce.domain.produtos.Fornecedor</class>
+            <class>br.com.ecommerce.ecommerce.domain.produtos.Produto</class>
+            <class>br.com.ecommerce.ecommerce.domain.produtos.ProdutoFornecedor</class>
+            
+            <properties>
+                <property name="javax.persistence.jdbc.driver"   value="com.mysql.jdbc.Driver"/>
+                <property name="javax.persistence.jdbc.url"      value="jdbc:mysql://localhost:3306/ecommerce"/>
+                <property name="javax.persistence.jdbc.user"     value="root"/>
+                <property name="javax.persistence.jdbc.password" value="padrao01"/>
+                
+                <property name="hibernate.dialect"      value="org.hibernate.dialect.MySQL57Dialect"/>
+                <property name="hibernate.show_sql"     value="true"/>
+                <property name="hibernate.format_sql"   value="true"/>
+                <property name="hibernate.hbm2ddl.auto" value="update"/>
+            </properties>
+            
+	</persistence-unit>
+</persistence>
