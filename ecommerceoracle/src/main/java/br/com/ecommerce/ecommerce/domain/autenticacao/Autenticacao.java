@@ -1,10 +1,12 @@
 package br.com.ecommerce.ecommerce.domain.autenticacao;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+
 public class Autenticacao {
 
 	private String login;
 	private String senha;
-	private char tipo;
+	//private char tipo;
 	
 	public Autenticacao() {
 		
@@ -14,9 +16,9 @@ public class Autenticacao {
 		super();
 		this.login = login;
 		this.senha = senha;
-		this.tipo = tipo;
+		//this.tipo = tipo;
 	}
-	
+
 	public String getLogin() {
 		return login;
 	}
@@ -33,12 +35,15 @@ public class Autenticacao {
 		this.senha = senha;
 	}
 	
-	public char getTipo() {
-		return tipo;
-	}
+	//public char getTipo() {
+	//	return tipo;
+	//}
 	
-	public void setTipo(char tipo) {
-		this.tipo = tipo;
-	}
-	
+	//public void setTipo(char tipo) {
+	//	this.tipo = tipo;
+	//}
+		public UsernamePasswordAuthenticationToken converter() {
+			
+			return new UsernamePasswordAuthenticationToken(login, senha);
+		}
 }

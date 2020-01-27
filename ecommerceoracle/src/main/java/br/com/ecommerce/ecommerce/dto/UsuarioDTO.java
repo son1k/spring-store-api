@@ -10,7 +10,7 @@ import br.com.ecommerce.ecommerce.domain.autenticacao.Usuario;
 @Component
 public class UsuarioDTO {
 
-	private int codigo_usuario;
+	private long codigo_usuario;
 	private String login;
 	private String nome;
 	private String cpf;
@@ -25,7 +25,7 @@ public class UsuarioDTO {
 		this.email = usuario.getEmail();
 	}
 
-	public int getCodigo_usuario() {
+	public long getCodigo_usuario() {
 		return codigo_usuario;
 	}
 

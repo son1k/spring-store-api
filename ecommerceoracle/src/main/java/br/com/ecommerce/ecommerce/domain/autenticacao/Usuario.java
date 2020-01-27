@@ -1,20 +1,34 @@
 package br.com.ecommerce.ecommerce.domain.autenticacao;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Entity(name = "usuarios")
 @Component
-public class Usuario {
+public class Usuario implements UserDetails {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigo_usuario;
+	private long codigo_usuario;
 	
 	@Column(nullable = false)
 	private String login;
@@ -34,6 +48,9 @@ public class Usuario {
 	@Column(nullable = false)
 	private char tipo;
 
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Perfil> perfis = new ArrayList<>();
+	
 	public Usuario() {
 		
 	}
@@ -49,7 +66,7 @@ public class Usuario {
 		this.tipo = tipo;
 	}
 
-	public int getCodigoUsuario() {
+	public long getCodigoUsuario() {
 		return codigo_usuario;
 	}
 
@@ -67,9 +84,11 @@ public class Usuario {
 
 	public String getSenha() {
 		return senha;
+		//return senha;
 	}
 
 	public void setSenha(String senha) {
+		//this.senha = senha;
 		this.senha = senha;
 	}
 
@@ -103,6 +122,55 @@ public class Usuario {
 
 	public void setTipo(char tipo) {
 		this.tipo = tipo;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return this.perfis;
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return BcryptGenerator(this.senha);
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.login;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	private String BcryptGenerator(String senha) {
+		String password = senha;
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(password);
+		return hashedPassword;
 	}
 	
 }

@@ -18,7 +18,7 @@ public class UsuarioDAO {
 		return usuarioRepository.findAll();
 	}
 	
-	public Optional<Usuario> umUsuario(int codigoUsuario){
+	public Optional<Usuario> umUsuario(long codigoUsuario){
 		
 		return usuarioRepository.findById(codigoUsuario);
 	}
@@ -28,12 +28,12 @@ public class UsuarioDAO {
 		usuarioRepository.save(usuario);
 	}
 	
-	public void deletar(int codigoUsuario) {
+	public void deletar(long codigoUsuario) {
 		
 		usuarioRepository.deleteById(codigoUsuario);
 	}
 	
-	public void atualizar(int codigoUsuario, Usuario usuario) {
+	public void atualizar(long codigoUsuario, Usuario usuario) {
 		
 		Usuario novoUsuario = usuarioRepository.getOne(codigoUsuario);
 			novoUsuario.setLogin(usuario.getLogin());
