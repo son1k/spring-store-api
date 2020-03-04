@@ -34,8 +34,8 @@ public class SwaggerConfig {
 		
 		@SuppressWarnings("rawtypes")
 		ApiInfo apiInfo = new ApiInfo("API REST", "API ECOMMERCE", "1.0", "dont have Terms",
-				new springfox.documentation.service.Contact("Marcio", "tanto faz", "marcio@gmail.com"),
-				"Apache Licensa", 
+				new springfox.documentation.service.Contact("Marcio", "http://www.resource.com.br", "marcio.santos@qintess.com"),
+				"Apache License", 
 				"www.apache.org/license.html", 
 				new ArrayList<VendorExtension>());
 		return apiInfo;
