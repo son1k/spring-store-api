@@ -18,19 +18,51 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo_produto;
 	
-	@Column(nullable = false)
+	@Column (nullable = true)
 	private String nome;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private double preco_de_custo;
 	
-	@Column(nullable = false)
+	@Column (nullable = true)
 	private double preco_de_venda;
 	
 	private int estoque_codigo;
 	
-	@Column(nullable = false)
+	@Column (nullable = true)
 	private int quantidade;
+
+	public int getCodigo_produto() {
+		return codigo_produto;
+	}
+
+	public void setCodigo_produto(int codigo_produto) {
+		this.codigo_produto = codigo_produto;
+	}
+
+	public double getPreco_de_custo() {
+		return preco_de_custo;
+	}
+
+	public void setPreco_de_custo(double preco_de_custo) {
+		this.preco_de_custo = preco_de_custo;
+	}
+
+	public double getPreco_de_venda() {
+		return preco_de_venda;
+	}
+
+	public void setPreco_de_venda(double preco_de_venda) {
+		this.preco_de_venda = preco_de_venda;
+	}
+
+	public int getEstoque_codigo() {
+		return estoque_codigo;
+	}
+
+	public void setEstoque_codigo(int estoque_codigo) {
+		this.estoque_codigo = estoque_codigo;
+	}
 
 	public Produto() {
 		

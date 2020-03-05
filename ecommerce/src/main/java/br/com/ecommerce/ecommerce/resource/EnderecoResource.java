@@ -42,5 +42,7 @@ public class EnderecoResource {
 		else
 			return ResponseEntity.notFound().build();
 	}
+	
+	
 
 }

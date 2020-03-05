@@ -12,8 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 
 import br.com.ecommerce.ecommerce.repository.UsuarioRepository;
 
@@ -60,7 +58,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         authorizeRequests()
         .antMatchers(HttpMethod.POST,"/auth")
         .permitAll()
-        .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**")
+        .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**","/ecommerce/produtos/*","/ecommerce/produtos")
         .permitAll()
         .anyRequest().authenticated().and()
         .sessionManagement()
