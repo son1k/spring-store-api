@@ -1,5 +1,6 @@
 package br.com.ecommerce.ecommerce.domain.autenticacao;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,9 @@ import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
 
+import lombok.Data;
+
+@Data
 @Entity(name = "enderecos")
 @Component
 public class Endereco {

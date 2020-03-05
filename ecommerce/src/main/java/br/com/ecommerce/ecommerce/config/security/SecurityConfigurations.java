@@ -14,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
 import br.com.ecommerce.ecommerce.repository.UsuarioRepository;
 
 
@@ -30,6 +31,8 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	 private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+	
 	@Override
 	@Bean
 	protected AuthenticationManager authenticationManager() throws Exception {
@@ -45,13 +48,26 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	//Configuracoes de autorizacao
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		.antMatchers(HttpMethod.POST, "/auth").permitAll()
-		.anyRequest().authenticated()
-		.and().csrf().disable()
-		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		.and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
+//		http.csrf().disable().authorizeRequests()
+//		.antMatchers(HttpMethod.POST,"/auth","http://localhost:8080/swagger-ui.html","/webjars/**", "/v2/api-docs", "/configuration/**")
+//		.permitAll()
+//		.anyRequest().authenticated()
+//		.and().csrf().disable()
+//		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//		.and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
+//		  
+		http.csrf().disable().
+        authorizeRequests()
+        .antMatchers(HttpMethod.POST,"/auth")
+        .permitAll()
+        .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**")
+        .permitAll()
+        .anyRequest().authenticated().and()
+        .sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		http.headers().frameOptions().disable();
 	}
+	
 	
 	
 	//Configuracoes de recursos estaticos(js, css, imagens, etc.)
