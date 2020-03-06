@@ -8,8 +8,10 @@ import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
 
+import lombok.Data;
 
 
+@Data
 @Entity(name = "produtos")
 @Component
 public class Produto {
@@ -32,99 +34,6 @@ public class Produto {
 	@Column (nullable = true)
 	private int quantidade;
 
-	public int getCodigo_produto() {
-		return codigo_produto;
-	}
 
-	public void setCodigo_produto(int codigo_produto) {
-		this.codigo_produto = codigo_produto;
-	}
-
-	public double getPreco_de_custo() {
-		return preco_de_custo;
-	}
-
-	public void setPreco_de_custo(double preco_de_custo) {
-		this.preco_de_custo = preco_de_custo;
-	}
-
-	public double getPreco_de_venda() {
-		return preco_de_venda;
-	}
-
-	public void setPreco_de_venda(double preco_de_venda) {
-		this.preco_de_venda = preco_de_venda;
-	}
-
-	public int getEstoque_codigo() {
-		return estoque_codigo;
-	}
-
-	public void setEstoque_codigo(int estoque_codigo) {
-		this.estoque_codigo = estoque_codigo;
-	}
-
-	public Produto() {
-		
-	}
-	
-	public Produto(int codigoProduto, String nome, double precoDeCusto, double precoDeVenda, int estoqueCodigo,
-			int quantidade) {
-		super();
-		this.codigo_produto = codigoProduto;
-		this.nome = nome;
-		this.preco_de_custo = precoDeCusto;
-		this.preco_de_venda = precoDeVenda;
-		this.estoque_codigo = estoqueCodigo;
-		this.quantidade = quantidade;
-	}
-
-	public int getCodigoProduto() {
-		return codigo_produto;
-	}
-
-	public void setCodigoProduto(int codigoProduto) {
-		this.codigo_produto = codigoProduto;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public double getPrecoDeCusto() {
-		return preco_de_custo;
-	}
-
-	public void setPrecoDeCusto(double precoDeCusto) {
-		this.preco_de_custo = precoDeCusto;
-	}
-
-	public double getPrecoDeVenda() {
-		return preco_de_venda;
-	}
-
-	public void setPrecoDeVenda(double precoDeVenda) {
-		this.preco_de_venda = precoDeVenda;
-	}
-
-	public int getEstoqueCodigo() {
-		return estoque_codigo;
-	}
-
-	public void setEstoqueCodigo(int estoqueCodigo) {
-		this.estoque_codigo = estoqueCodigo;
-	}
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
 	
 }

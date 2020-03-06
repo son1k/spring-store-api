@@ -15,9 +15,9 @@ public class ProdutoDTO {
 	
 	public ProdutoDTO(Produto produto) {
 		super();
-		this.codigo_produto = produto.getCodigoProduto();
+		this.codigo_produto = produto.getCodigo_produto();
 		this.nome = produto.getNome();
-		this.preco_de_venda = produto.getPrecoDeVenda();
+		this.preco_de_venda = produto.getPreco_de_venda();
 		this.quantidade = produto.getQuantidade();
 	}
 
