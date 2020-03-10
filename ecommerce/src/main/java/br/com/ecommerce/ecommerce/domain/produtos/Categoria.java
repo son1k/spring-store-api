@@ -6,25 +6,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.stereotype.Component;
-
 import lombok.Data;
 
 @Data
-@Entity(name = "fornecedores")
-@Component
-public class Fornecedor {
-
+@Entity
+public class Categoria {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigo_fornecedor;
+	private int id;
 	
-	@Column(nullable = false)
+	@Column
 	private String nome;
 	
-	@Column(nullable = false)
-	private int endereco_codigo;
 
-
-	 
 }

@@ -13,7 +13,7 @@ public class EstoqueDTO {
 	
 	public EstoqueDTO(Estoque estoque) {
 		super();
-		this.codigo_estoque = estoque.getCodigoEstoque();
+		this.codigo_estoque = estoque.getCodigo_estoque();
 		this.descricao = estoque.getDescricao();
 	}
 

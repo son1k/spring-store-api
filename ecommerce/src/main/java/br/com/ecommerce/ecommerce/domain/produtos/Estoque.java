@@ -8,6 +8,9 @@ import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
 
+import lombok.Data;
+
+@Data
 @Entity(name = "estoques")
 @Component
 public class Estoque {
@@ -25,36 +28,7 @@ public class Estoque {
 	public Estoque() {
 		
 	}
-	
-	public Estoque(int codigoEstoque, String descricao, int enderecoCodigo) {
-		super();
-		this.codigo_estoque = codigoEstoque;
-		this.descricao = descricao;
-		this.endereco_codigo = enderecoCodigo;
-	}
 
-	public int getCodigoEstoque() {
-		return codigo_estoque;
-	}
 
-	public void setCodigoEstoque(int codigoEstoque) {
-		this.codigo_estoque = codigoEstoque;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public int getEnderecoCodigo() {
-		return endereco_codigo;
-	}
-
-	public void setEnderecoCodigo(int enderecoCodigo) {
-		this.endereco_codigo = enderecoCodigo;
-	}
 	
 }

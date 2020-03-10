@@ -33,6 +33,8 @@ public class Produto {
 	
 	@Column (nullable = true)
 	private int quantidade;
+	
+	
 
 
 	

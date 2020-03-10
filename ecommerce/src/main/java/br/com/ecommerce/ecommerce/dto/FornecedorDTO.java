@@ -13,7 +13,7 @@ public class FornecedorDTO {
 	
 	public FornecedorDTO(Fornecedor fornecedor) {
 		super();
-		this.codigo_fornecedor = fornecedor.getCodigoFornecedor();
+		this.codigo_fornecedor = fornecedor.getCodigo_fornecedor();
 		this.nome = fornecedor.getNome();
 	}
 
