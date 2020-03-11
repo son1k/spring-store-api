@@ -5,15 +5,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.ComponentScan;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
 @Data
 @Entity(name = "produtos")
-@Component
+@AllArgsConstructor
+@ComponentScan
 public class Produto {
 
 	@Id
@@ -33,6 +37,13 @@ public class Produto {
 	
 	@Column (nullable = true)
 	private int quantidade;
+	
+	@OneToOne
+	private Categoria categoria;
+	
+	public Produto() {
+		
+	}
 	
 	
 
