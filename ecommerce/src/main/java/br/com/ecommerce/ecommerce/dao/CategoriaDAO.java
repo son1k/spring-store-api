@@ -26,6 +26,8 @@ public class CategoriaDAO {
 	}
 	
 	
+	//comentando para commitar
+	
 
 
 }
