@@ -41,6 +41,9 @@ public class Produto {
 	@OneToOne
 	private Categoria categoria;
 	
+	@Column
+	private String imagem;
+	
 	public Produto() {
 		
 	}

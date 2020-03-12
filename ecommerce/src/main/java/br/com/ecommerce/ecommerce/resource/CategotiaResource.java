@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ecommerce.ecommerce.domain.produtos.Categoria;
-import br.com.ecommerce.ecommerce.domain.produtos.Produto;
 import br.com.ecommerce.ecommerce.repository.CategoriaRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,5 +30,7 @@ public class CategotiaResource {
 		
 		return !categoria.isEmpty() ? ResponseEntity.ok(categoria) :ResponseEntity.noContent().build() ;
 	}
+	
+	
 
 }
