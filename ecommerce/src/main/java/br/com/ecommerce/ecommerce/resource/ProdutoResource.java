@@ -2,6 +2,7 @@ package br.com.ecommerce.ecommerce.resource;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,6 @@ import br.com.ecommerce.ecommerce.dao.ProdutoDAO;
 import br.com.ecommerce.ecommerce.domain.produtos.Categoria;
 import br.com.ecommerce.ecommerce.domain.produtos.Produto;
 import br.com.ecommerce.ecommerce.dto.ProdutoDTO;
-import br.com.ecommerce.ecommerce.repository.CategoriaRepository;
 import br.com.ecommerce.ecommerce.repository.ProdutoRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,7 +32,7 @@ public class ProdutoResource {
 
 	@Autowired
 	private ProdutoDAO produtoDAO;
-	
+
 	@Autowired
 	private CategoriaDAO categoriaDAO;
 
@@ -60,22 +60,17 @@ public class ProdutoResource {
 			return ResponseEntity.noContent().build();
 	}
 
-	
-	
-	 @PostMapping
-	 
-	 @ResponseStatus(HttpStatus.CREATED)
-	 
-	 @ApiOperation(value = "Cria um novo produto") public void criar(@RequestBody
-	 Produto produto, @RequestParam ("categoria")int id) {
-	
-	  Categoria categoria = categoriaDAO.umProduto(id).get();
-	  produto.setCategoria(categoria);
-	  
-	  produtoRepository.save(produto);
-			  
-	 }
-	 
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	@ApiOperation(value = "Cria um novo produto")
+	public void criar(@RequestBody Produto produto,@RequestParam("categoria_id") Integer id) {
+		Categoria categoria=  new Categoria();
+		produto.setCategoria(categoria);
+		categoria = categoriaDAO.umProduto(id).get();
+
+		produtoRepository.save(produto);
+
+	}
 
 	@DeleteMapping("/{codigo_produto}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
